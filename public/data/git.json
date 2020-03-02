@@ -1,0 +1,98 @@
+{
+  "id": "git",
+  "options": [
+    {
+      "value": "add",
+      "label": "add",
+      "options": [
+        {
+          "value": "new-changes",
+          "label": "new changes",
+          "usage": "git add <file.ext>",
+          "note": "To add all the files in the current directory use:\n`git add .`\n\nTo add a directory use `git add <directory>`"
+        },
+        {
+          "value": "add-new-branch",
+          "label": "a new branch",
+          "options": [
+            {
+              "value": "no-checkout",
+              "label": "but remain in the current branch I am working from",
+              "usage": "git branch <new name>"
+            },
+            {
+              "value": "checkout",
+              "label": "and switch to the new branch",
+              "usage": "git checkout -b <new branch name>"
+            },
+            {
+              "value": "checkout-remote",
+              "label": "from another branch",
+              "usage": "git checkout -b <new branch name> <another branch>"
+            }
+          ]
+        },
+        {
+          "value": "add-repo",
+          "label": "new remote repo",
+          "usage": "git remote add <shortname> <url>"
+        },
+        {
+          "value": "add-alias",
+          "label": "alias",
+          "usage": "git config --global alias.<alias> <command>",
+          "note": "e.g. git config --global alias.st status. Typing git st in the terminal now does the same thing as git status"
+        },
+        {
+          "value": "add-annotated-tag",
+          "label": "annotated tag",
+          "usage": "git tag -a v1.4 -m `my version 1.4` && git push --tags"
+        },
+        {
+          "value": "add-annotated-tag-for-old-commit",
+          "label": "annotated tag for old commit",
+          "usage": "git tag -a v1.2 -m 'version 1.2' <commit-hash> && git push --tags"
+        }
+      ]
+    },
+    {
+      "value": "commit",
+      "label": "commit",
+      "options": [
+        {
+          "value": "local-changes",
+          "label": "commit all local changes in tracked files",
+          "usage": "git commit -a"
+        },
+        {
+          "value": "staged-changes",
+          "label": "commit all staged changes",
+          "usage": "git commit -m <message>",
+          "note": "Replace <message> with your commit message"
+        }
+      ]
+    },
+    {
+      "value": "revert",
+      "label": "revert/reset",
+      "options": [
+        {
+          "value": "specific-commit",
+          "label": "a specific commit",
+          "usage": "git revert <commit-hash>",
+          "note": "Use git log to see the hash of each commit"
+        },
+        {
+          "value": "to-last-commit",
+          "label": "to last commit",
+          "usage": "git reset --hard"
+        },
+        {
+          "value": "to-last-commit-from-remote",
+          "label": "to last commit on remote branch",
+          "usage": "git reset --hard <repo>/<branch>"
+        }
+      ]
+    }
+  ]
+}
