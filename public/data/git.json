@@ -93,6 +93,235 @@
           "usage": "git reset --hard <repo>/<branch>"
         }
       ]
+    },
+    {
+      "value": "initialize",
+      "label": "initialize",
+      "options": [
+        {
+          "value": "new-repo",
+          "label": "a new repository",
+          "nb": "Make sure you are in the right directory",
+          "usage": "git init"
+        }
+      ]
+    },
+    {
+      "value": "modify",
+      "label": "modify",
+      "options": [
+        {
+          "value": "commit-message",
+          "label": "my last/latest commit message",
+          "usage": "git commit --amend"
+        },
+        {
+          "value": "commit",
+          "label": "my last commit but leave the commit message as is",
+          "usage": "git add . \ngit commit --amend --no-edit"
+        },
+        {
+          "value": "remoteUrl",
+          "label": "repo's remote url",
+          "usage": "git remote set-url <alias> <url>",
+          "nb": "<alias> is your remote name e.g origin"
+        }
+      ]
+    },
+    {
+      "value": "show",
+      "label": "show/view",
+      "options": [
+        {
+          "value": "repo-status",
+          "label": "status of project including staged, unstaged and untracked files",
+          "usage": "git status"
+        },
+        {
+          "value": "logs",
+          "label": "commit logs/history"
+        },
+        {
+          "value": "uncommittedChanges",
+          "label": "uncommitted changes",
+          "usage": "git diff"
+        },
+        {
+          "value": "committedChanges",
+          "label": "committed/staged changes",
+          "usage": "git diff --staged"
+        },
+        {
+          "value": "remoteUrl",
+          "label": "repo's remote url",
+          "usage": "git remote -v"
+        },
+        {
+          "value": "stash",
+          "label": "stash",
+          "usage": "git stash list"
+        },
+        {
+          "value": "branch",
+          "label": "branches",
+          "usage": "git branch",
+          "nb": "The active branch is prefixed with *"
+        },
+        {
+          "value": "tags",
+          "label": "tags",
+          "usage": "git tag"
+        }
+      ]
+    },
+    {
+      "value": "delete",
+      "label": "delete/remove",
+      "options": [
+        {
+          "value": "branch",
+          "label": "a branch",
+          "usage": "git branch -D <branch name>"
+        },
+        {
+          "value": "delete-multiple-branches",
+          "label": "multiple branches"
+        },
+        {
+          "value": "tag",
+          "label": "a tag",
+          "usage": "git tag -d v<tag version>"
+        },
+        {
+          "value": "remote",
+          "label": "remote",
+          "usage": "git remote rm <remote>"
+        },
+        {
+          "value": "untracked-files",
+          "label": "untracked files",
+          "usage": "git clean -<flag>",
+          "nb": "replace -<flag> with:\n -i for interactive command\n -n to preview what will be removed\n -f to remove forcefully\n -d to remove directories\n -X to remove ignored files\n -x to remove ignored and non-ignored files"
+        },
+        {
+          "value": "files-from-index",
+          "label": "files from index",
+          "usage": "git rm --cached <file or dir>",
+          "nb": "Use this option to unstage and remove paths only from the index. Working tree files, whether modified or not, will be left alone."
+        },
+        {
+          "value": "local-branches-not-on-remote",
+          "label": "local branches that don't exist at remote",
+          "usage": "git remote prune <remote-name>",
+          "nb": "Use the --dry-run option to report what branches will be pruned, but do not actually prune them"
+        },
+        {
+          "value": "files-from-old-commit",
+          "label": "files from old commits",
+          "usage": "git filter-branch --index-filter \n'git rm --cached --ignore-unmatch path/to/mylarge_file' \n--tag-name-filter cat -- --all\n\nfilter-branch keeps backups too, so the size of the repo won't decrease immediately unless you expire the reflogs and garbage collect:\n\nrm -Rf .git/refs/original       # careful\ngit gc --aggressive --prune=now # danger",
+          "nb": "Like the rebasing option described before, filter-branch is rewriting operation. If you have published history, you'll have to --force push the new refs."
+        }
+      ]
+    },
+    {
+      "value": "compareCommits",
+      "label": "compare two commits",
+      "options": [
+        {
+          "value": "terminal",
+          "label": "and output result in the terminal",
+          "usage": "git diff <sha1> <sha2> | less",
+          "nb": "sha1 and sha2 are the sha hash of the commits you want to compare."
+        },
+        {
+          "value": "file",
+          "label": "and output result to a file",
+          "usage": "git diff <sha1> <sha2> > diff.txt",
+          "nb": "sha1 and sha2 are the sha of the commits you want to compare. \n\ndiff.txt is the file you want to store the contents of the diff"
+        }
+      ]
+    },
+    {
+      "value": "configure",
+      "label": "configure",
+      "options": [
+        {
+          "value": "email-name",
+          "label": "name and email address",
+          "usage": "git config --global user.name \"username\" \n\ngit config --global user.email \"email address\"",
+          "note": "Your username and email address should be the same as the one used with your git hosting provider i.e. github, bitbucket, gitlab etc"
+        },
+        {
+          "value": "editor",
+          "label": "default editor",
+          "usage": "git config --global core.editor \"vim\"",
+          "note": "Change default editor to vim."
+        },
+        {
+          "value": "diff-tool",
+          "label": "external diff tool",
+          "usage": "git config --global diff.external \"meld\"",
+          "note": "Set external diff tool to meld."
+        },
+        {
+          "value": "merge-tool",
+          "label": "default merge tool",
+          "usage": "git config --global merge.tool \"meld\"",
+          "note": "Set default merge tool to meld."
+        },
+        {
+          "value": "color",
+          "label": "color",
+          "usage": "git config --global color.ui auto",
+          "note": "Enables helpful colorization of command line output"
+        },
+        {
+          "value": "signingkey",
+          "label": "add the GPG key",
+          "usage": "git config --global user.signingkey <your-secret-gpg-key>",
+          "note": "Git is cryptographically secure, but it’s not foolproof. If you’re taking work from others on the internet and want to verify that commits are actually from a trusted source, Git has a few ways to sign and verify work using GPG."
+        }
+      ]
+    },
+    {
+      "value": "clone",
+      "label": "clone"
+    },
+    {
+      "value": "ignore",
+      "label": "ignore"
+    },
+    {
+      "value": "rename",
+      "label": "rename"
+    },
+    {
+      "value": "merge",
+      "label": "merge"
+    },
+    {
+      "value": "squash",
+      "label": "squash"
+    },
+    {
+      "value": "stash",
+      "label": "stash"
+    },
+    {
+      "value": "debug",
+      "label": "debug"
+    },
+    {
+      "value": "recover",
+      "label": "recover"
+    },
+    {
+      "value": "synchronize",
+      "label": "synchronize"
+    },
+    {
+      "value": "rebase",
+      "label": "rebase"
     }
   ]
 }
